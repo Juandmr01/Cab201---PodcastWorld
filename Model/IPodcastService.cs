@@ -1,5 +1,6 @@
 public interface IPodcastService
 {
+    void AddPodcast(Podcast podcast);
     bool CheckPodcastExistence();
     List<Podcast> GetPodcastInAlphabecticOrder();
     List<Podcast> GetAvailablePodcasts(PremiumListener user);

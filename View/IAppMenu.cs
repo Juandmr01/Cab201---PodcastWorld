@@ -87,8 +87,8 @@ public interface IAppMenu
 
     // Welcome and account details
     void DisplayWelcomeBack(string name);
-    void DisplayUserDetails(User user);
-    void DisplayPremiumUserDetails(PremiumListener premiumListener);
+    void DisplayUserDetails(User user, int episodesStarted, int episodesCompleted, int totalMinutes, int advertisements);
+    void DisplayPremiumUserDetails(PremiumListener premiumListener, int episodesStarted, int episodesCompleted, int totalMinutes);
     void DisplayPodcasterDetails(Podcaster podcaster);
 
     // Podcast and episode display

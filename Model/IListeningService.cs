@@ -7,4 +7,8 @@ public interface IListeningService
     int GetThumbsUpCount(Episode episode);
     int GetListenersStarted(Episode episode);
     int GetListenersCompleted(Episode episode);
+    int GetEpisodesStarted(User user);
+    int GetEpisodesCompleted(User user);
+    int GetTotalMinutesListened(User user);
+    int GetAdvertisementsListened(User user);
 }

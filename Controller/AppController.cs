@@ -1,6 +1,6 @@
 /// <summary>
 /// Main controller that handles user interaction flow and delegates
-/// between the View (AppMenu) and Model (PodcastWorld) layers.
+/// between the View (AppMenu) and Model (Repositories) layers.
 /// </summary>
 class AppController
 {
@@ -102,7 +102,7 @@ class AppController
                 {
                     password = appMenu.GetNewPassword();   // or GetNewPassword() if you prefer
 
-                    if (!User.IsValidPassword(password))
+                    if (!Validation.IsValidPassword(password))
                     {
                         appMenu.DisplayInvalidPassword();
                         continue;
@@ -131,7 +131,10 @@ class AppController
                             premiumChoice = appMenu.DisplayPremiumListenerMenuOptions();
                             if (premiumChoice == SeeDetails)
                             {
-                                appMenu.DisplayPremiumUserDetails(premiumUser);
+                                appMenu.DisplayPremiumUserDetails(premiumUser,
+                                    listeningService.GetEpisodesStarted(premiumUser),
+                                    listeningService.GetEpisodesCompleted(premiumUser),
+                                    listeningService.GetTotalMinutesListened(premiumUser));
                             }
                             else if (premiumChoice == ViewAllPodcasts)
                             {
@@ -419,7 +422,11 @@ class AppController
                         ListenerChoice = appMenu.DisplayRegularListenerMenuOptions();
                         if (ListenerChoice == SeeDetails)
                         {
-                            appMenu.DisplayUserDetails(user);
+                            appMenu.DisplayUserDetails(user,
+                                listeningService.GetEpisodesStarted(user),
+                                listeningService.GetEpisodesCompleted(user),
+                                listeningService.GetTotalMinutesListened(user),
+                                listeningService.GetAdvertisementsListened(user));
                         }
                         else if (ListenerChoice == ChangePassword)
                         {
@@ -437,7 +444,7 @@ class AppController
                             string newPassword = appMenu.GetChangedPassword();
                             do
                             {
-                                if (!User.IsValidPassword(newPassword))
+                                if (!Validation.IsValidPassword(newPassword))
                                 {
                                     appMenu.DisplayInvalidPassword();
                                     newPassword = appMenu.GetChangedPassword();
@@ -447,7 +454,7 @@ class AppController
                                     appMenu.DisplaySamePasswordError();
                                     newPassword = appMenu.GetChangedPassword();
                                 }
-                            } while (!User.IsValidPassword(newPassword) || newPassword.Equals(currentPassword));
+                            } while (!Validation.IsValidPassword(newPassword) || newPassword.Equals(currentPassword));
 
                             user.Password = newPassword;
                             appMenu.DisplayPasswordUpdateSuccess();
@@ -634,26 +641,26 @@ class AppController
     {
         string name = GetValidatedInput(
             () => appMenu.GetName(),
-            a => User.IsValidName(a),
+            a => Validation.IsValidName(a),
             () => appMenu.DisplayInvalidName()
         );
 
 
        int age = GetValidatedInput(
             () => appMenu.GetAge(),
-            a => User.IsValidAge(a),
+            a => Validation.IsValidAge(a),
             () => appMenu.DisplayInvalidAge());
 
 
         string mobileNumber = GetValidatedInput(
             () => appMenu.GetMobileNumber(),
-            m => User.IsValidMobileNumber(m),
+            m => Validation.IsValidMobileNumber(m),
             () => appMenu.DisplayInvalidMobileNumber()
         );
         
 
         string email = appMenu.GetEmail();
-        while (userService.CheckEmailExistence(email) || !User.IsValidEmail(email))
+        while (userService.CheckEmailExistence(email) || !Validation.IsValidEmail(email))
         {
             if (userService.CheckEmailExistence(email))
                 appMenu.DisplayErrorEmailRegister();
@@ -664,7 +671,7 @@ class AppController
 
         string password = GetValidatedInput(
             () => appMenu.GetPassword(),
-            m => User.IsValidPassword(m),
+            m => Validation.IsValidPassword(m),
             () => appMenu.DisplayInvalidPassword()
         );
 

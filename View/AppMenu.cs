@@ -56,6 +56,7 @@ public class AppMenu : IAppMenu
       return userChoice;
    }
 
+
    public void DisplayLoginMenu()
    {
       CmdLineUI.DisplayString();
@@ -273,6 +274,7 @@ public class AppMenu : IAppMenu
       CmdLineUI.DisplayErrorAgain("Email already registered");
    }
 
+
    public void DisplayInvalidName()
    {
       CmdLineUI.DisplayErrorAgain("Supplied name is invalid");
@@ -282,7 +284,7 @@ public class AppMenu : IAppMenu
    {
       CmdLineUI.DisplayErrorAgain("Supplied age is invalid");
    }
-
+     
    public void DisplayInvalidMobileNumber()
    {
 
@@ -427,29 +429,29 @@ public class AppMenu : IAppMenu
       CmdLineUI.DisplayString($"Welcome back {name}.");
    }
 
-   public void DisplayUserDetails(User user)
+   public void DisplayUserDetails(User user, int episodesStarted, int episodesCompleted, int totalMinutes, int advertisements)
    {
       CmdLineUI.DisplayString("Your details.");
       CmdLineUI.DisplayString($"Name: {user.Name}");
       CmdLineUI.DisplayString($"Age: {user.Age}");
       CmdLineUI.DisplayString($"Mobile phone number: {user.MobileNumber}");
       CmdLineUI.DisplayString($"Email: {user.Email}");
-      CmdLineUI.DisplayString($"Episodes started: {user.EpisodesStarted}");
-      CmdLineUI.DisplayString($"Episodes completed: {user.EpisodesCompleted}");
-      CmdLineUI.DisplayString($"Total minutes listened to: {user.TotalMinutesListenedTo}");
-      CmdLineUI.DisplayString($"Advertisements listened to: {user.AdvertisementsListenedTo}");
+      CmdLineUI.DisplayString($"Episodes started: {episodesStarted}");
+      CmdLineUI.DisplayString($"Episodes completed: {episodesCompleted}");
+      CmdLineUI.DisplayString($"Total minutes listened to: {totalMinutes}");
+      CmdLineUI.DisplayString($"Advertisements listened to: {advertisements}");
    }
 
-   public void DisplayPremiumUserDetails(PremiumListener premiumListener)
+   public void DisplayPremiumUserDetails(PremiumListener premiumListener, int episodesStarted, int episodesCompleted, int totalMinutes)
    {
       CmdLineUI.DisplayString("Your details.");
       CmdLineUI.DisplayString($"Name: {premiumListener.Name}");
       CmdLineUI.DisplayString($"Age: {premiumListener.Age}");
       CmdLineUI.DisplayString($"Mobile phone number: {premiumListener.MobileNumber}");
       CmdLineUI.DisplayString($"Email: {premiumListener.Email}");
-      CmdLineUI.DisplayString($"Episodes started: {premiumListener.EpisodesStarted}");
-      CmdLineUI.DisplayString($"Episodes completed: {premiumListener.EpisodesCompleted}");
-      CmdLineUI.DisplayString($"Total minutes listened to: {premiumListener.TotalMinutesListenedTo}");
+      CmdLineUI.DisplayString($"Episodes started: {episodesStarted}");
+      CmdLineUI.DisplayString($"Episodes completed: {episodesCompleted}");
+      CmdLineUI.DisplayString($"Total minutes listened to: {totalMinutes}");
       CmdLineUI.DisplayString($"Registration Date: {premiumListener.RegistrationDate:dd/MM/yyyy}");
       CmdLineUI.DisplayString($"Pay ID: {premiumListener.PayId}");
    }

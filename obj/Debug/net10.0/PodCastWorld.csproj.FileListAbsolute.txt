@@ -12,3 +12,4 @@
 /Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.pdb
 /Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.genruntimeconfig.cache
 /Users/juandm/PodCastWorld/obj/Debug/net10.0/ref/PodCastWorld.dll
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.sourcelink.json

@@ -2,13 +2,10 @@
 {
     static void Main(string[] args)
     {
-        PodcastWorld podcastWorld = new PodcastWorld();
+        MasterRepository repository = new MasterRepository();
         IAppMenu appMenu = new AppMenu();
-        IUserService userService = podcastWorld;
-        IPodcastService podcastService = podcastWorld;
-        IListeningService listeningService = podcastWorld;
 
-        AppController app = new AppController(appMenu, userService, podcastService, listeningService);
+        AppController app = new AppController(appMenu, repository.UserService, repository.PodcastService, repository.ListeningService);
         app.Run();
     }
 }
