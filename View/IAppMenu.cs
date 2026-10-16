@@ -41,38 +41,9 @@ public interface IAppMenu
     string GetFeedbackText();
     int GetFeedbackViewMenuChoice();
 
-    // Requirements
-    void DisplayPasswordRequirements();
-
-    // Error messages
-    void DisplayErrorNoUser();
-    void DisplayErrorEmailNotRegister();
-    void DisplayErrorEmailRegister();
-    void DisplayInvalidName();
-    void DisplayInvalidAge();
-    void DisplayInvalidMobileNumber();
-    void DisplayInvalidMenuChoice();
-    void DisplayInvalidEmail();
-    void DisplayInvalidPassword();
-    void DisplayPasswordNotMatch();
-    void DisplayPasswordNotMatchAgain();
-    void DisplaySamePasswordError();
-    void DisplayInvalidPayId();
-    void DisplayNoPodcasts();
-    void DisplayNoEpisodesListener();
-    void DisplayNoEpisodesPodcaster();
-    void DisplayInvalidEpisodeName();
-    void DisplayInvalidPodcastName();
-    void DisplayInvalidPodcastDescription();
-    void DisplayInvalidEpisodeDate();
-    void DisplayInvalidEpisodeLength();
-    void DisplayInvalidBoolean();
-    void DisplayInvalidDateError();
-    void DisplayDateAfterError(DateTime date);
-    void DisplayOutOfRangeError();
-    void DisplayAlreadyFinished();
-    void DisplayPremiumOnlyError();
-    void DisplayNotSubscribedError();
+    // Generic error display
+    void DisplayRetryError(string message);
+    void DisplayErrorMessage(string message);
 
     // Status and confirmation messages
     void DisplayPremiumRegisteration();
@@ -81,7 +52,6 @@ public interface IAppMenu
     void DisplayCongratulationsMessage(string name);
     void DisplayCongratulationsMessagePremium(string name);
     void DisplayCongratsPD(string name);
-    void DisplayRegistrationSuccess(string name);
     void DisplayPasswordUpdateSuccess();
     void DisplayExit();
 

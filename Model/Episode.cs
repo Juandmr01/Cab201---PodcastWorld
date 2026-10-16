@@ -4,20 +4,61 @@
 /// </summary>
 public class Episode
 {
+    private string _name;
+    private string _episodeDescription;
+    private DateTime? _recordedDate;
+    private int _episodeLength;
+
     /// <summary>The episode's title.</summary>
-    public string Name { get; set; }
+    public string Name
+    {
+        get => _name;
+        private set
+        {
+            if (!IsValidEpisodeName(value))
+                throw new ArgumentException(MessageBox.InvalidEpisodeName);
+            _name = value;
+        }
+    }
 
     /// <summary>A short description of the episode's content.</summary>
-    public string EpisodeDescription { get; set; }
+    public string EpisodeDescription
+    {
+        get => _episodeDescription;
+        private set
+        {
+            if (!IsValidDescription(value))
+                throw new ArgumentException(MessageBox.InvalidPodcastDescription);
+            _episodeDescription = value;
+        }
+    }
 
     /// <summary>The date the episode was recorded.</summary>
-    public DateTime? RecordedDate { get; set; }
+    public DateTime? RecordedDate
+    {
+        get => _recordedDate;
+        private set
+        {
+            if (!IsValidRecordedDate(value))
+                throw new ArgumentException(MessageBox.InvalidDate);
+            _recordedDate = value;
+        }
+    }
 
     /// <summary>Length of the episode in minutes (1–300).</summary>
-    public int EpisodeLength { get; set; }
+    public int EpisodeLength
+    {
+        get => _episodeLength;
+        private set
+        {
+            if (!IsValidEpisodeLength(value))
+                throw new ArgumentException(MessageBox.OutOfRange);
+            _episodeLength = value;
+        }
+    }
 
     /// <summary>Whether this episode is restricted to premium listeners.</summary>
-    public bool PremmiumEpisode { get; set; } = false;
+    public bool PremmiumEpisode { get; private set; } = false;
 
     /// <summary>
     /// Creates a new episode with the specified details.

@@ -75,7 +75,7 @@ class AppController
             {
                 if (!userService.CheckUserExistence())
                 {
-                    appMenu.DisplayErrorNoUser();
+                    appMenu.DisplayErrorMessage(MessageBox.NoUsersRegistered);
                     continue;
                 }
                 string email;
@@ -92,7 +92,7 @@ class AppController
 
                     if (!userService.CheckEmailExistence(email))
                     {
-                        appMenu.DisplayErrorEmailNotRegister();
+                        appMenu.DisplayErrorMessage(MessageBox.EmailNotRegistered);
                         // loop continues = asks for email again
                     }
                 } while (!userService.CheckEmailExistence(email));
@@ -104,12 +104,12 @@ class AppController
 
                     if (!Validation.IsValidPassword(password))
                     {
-                        appMenu.DisplayInvalidPassword();
+                        appMenu.DisplayRetryError(MessageBox.InvalidPassword);
                         continue;
                     }
                     if (!userService.CheckEmailExistence(email) || !userService.GetUserByEmail(email).Password.Equals(password))
                     {
-                        appMenu.DisplayPasswordNotMatch();
+                        appMenu.DisplayErrorMessage(MessageBox.PasswordNotMatch);
                         continue;
                     }
 
@@ -117,7 +117,7 @@ class AppController
 
                     if (user == null)
                     {
-                        appMenu.DisplayPasswordNotMatch();
+                        appMenu.DisplayErrorMessage(MessageBox.PasswordNotMatch);
                         continue;
                     }
 
@@ -140,7 +140,7 @@ class AppController
                             {
                                 if (!podcastService.CheckPodcastExistence())
                                 {
-                                    appMenu.DisplayNoPodcasts();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                     continue;
                                 }
                                 List<Podcast> podcasts = podcastService.GetPodcastInAlphabecticOrder();
@@ -152,7 +152,7 @@ class AppController
                                     appMenu.DisplayPodcastDetails(selectedPodcast);
                                     if (selectedPodcast.Episodes.Count == 0)
                                     {
-                                        appMenu.DisplayNoEpisodesListener();
+                                        appMenu.DisplayErrorMessage(MessageBox.NoEpisodesListener);
                                     }
                                     else
                                     {
@@ -165,7 +165,7 @@ class AppController
                                 List<Podcast> podcasts = podcastService.GetPodcastInAlphabecticOrder();
                                 if (!podcastService.CheckPodcastExistence())
                                 {
-                                    appMenu.DisplayNoPodcasts();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                     continue;
                                 }
                                 appMenu.DisplayPodcastList($"Displaying podcasts for {premiumUser.Name} to listen to.", podcasts);
@@ -176,7 +176,7 @@ class AppController
                                     podcastChoice = appMenu.GetPodcastMenuChoice();
                                     if (podcastChoice == 0) break;
                                     if (podcastChoice < 0 || podcastChoice > podcasts.Count)
-                                        appMenu.DisplayOutOfRangeError();
+                                        appMenu.DisplayRetryError(MessageBox.OutOfRange);
                                 } while (podcastChoice < 0 || podcastChoice > podcasts.Count);
 
                                 if (podcastChoice == 0) continue;
@@ -187,7 +187,7 @@ class AppController
                             {
                                 if (!podcastService.CheckPodcastExistence())
                                 {
-                                    appMenu.DisplayNoPodcasts();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                     continue;
                                 }
                                 List<Podcast> subscribedPodcasts = premiumUser.SubscribedPodcasts.OrderBy(p => p.Title).ToList();
@@ -223,7 +223,7 @@ class AppController
                             {
                                 if (!podcastService.CheckPodcastExistence())
                                 {
-                                    appMenu.DisplayNoPodcasts();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                     continue;
                                 }
                                 List<Podcast> subscribedPodcasts = premiumUser.SubscribedPodcasts.OrderBy(p => p.Title).ToList();
@@ -249,7 +249,7 @@ class AppController
                                 List<Podcast> podcasts = podcastService.GetPodcastInAlphabecticOrder();
                                 if (!podcastService.CheckPodcastExistence())
                                 {
-                                    appMenu.DisplayNoPodcasts();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                     continue;
                                 }
                                 appMenu.DisplayPodcastList($"Displaying potential podcasts for {premiumUser.Name} to provide feedback on.", podcasts);
@@ -259,7 +259,7 @@ class AppController
                                     Podcast selectedPodcast = podcasts[podcastChoice - 1];
                                     if (selectedPodcast.Episodes.Count == 0)
                                     {
-                                        appMenu.DisplayNoEpisodesListener();
+                                        appMenu.DisplayErrorMessage(MessageBox.NoEpisodesListener);
                                     }
                                     else
                                     {
@@ -279,13 +279,13 @@ class AppController
                             {
                                 if (!podcastService.CheckPodcastExistence())
                                 {
-                                    appMenu.DisplayNoPodcasts();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                     continue;
                                 }
                                 List<Podcast> subscribedPodcasts = premiumUser.SubscribedPodcasts.OrderBy(p => p.Title).ToList();
                                 if (subscribedPodcasts.Count == 0)
                                 {
-                                    appMenu.DisplayNotSubscribedError();
+                                    appMenu.DisplayErrorMessage(MessageBox.NotSubscribed);
                                     continue;
                                 }
                                 appMenu.DisplayPodcastList($"Displaying subscribed podcasts for {premiumUser.Name} to listen to.", subscribedPodcasts);
@@ -296,7 +296,7 @@ class AppController
                                     podcastChoice = appMenu.GetPodcastMenuChoice();
                                     if (podcastChoice == 0) break;
                                     if (podcastChoice < 0 || podcastChoice > subscribedPodcasts.Count)
-                                        appMenu.DisplayOutOfRangeError();
+                                        appMenu.DisplayRetryError(MessageBox.OutOfRange);
                                 } while (podcastChoice < 0 || podcastChoice > subscribedPodcasts.Count);
 
                                 if (podcastChoice == 0) continue;
@@ -305,7 +305,7 @@ class AppController
                             }
                             else if (premiumChoice != PremiumLogOut && premiumChoice != ChangePassword)
                             {
-                                appMenu.DisplayInvalidMenuChoice();
+                                appMenu.DisplayRetryError(MessageBox.InvalidMenuChoice);
                             }
                         } while (premiumChoice != PremiumLogOut);
                         loggedIn = true;
@@ -328,31 +328,31 @@ class AppController
                                 string EpisodeName = GetValidatedInput(
                                     () => appMenu.GetEpisodeName(),
                                     a => Episode.IsValidEpisodeName(a),
-                                    () => appMenu.DisplayInvalidEpisodeName()
+                                    () => appMenu.DisplayRetryError(MessageBox.InvalidEpisodeName)
                                 );
 
                                 string EpisodeDescription = GetValidatedInput(
                                     () => appMenu.GetPodcastDescription(),
                                     a => Episode.IsValidDescription(a),
-                                    () => appMenu.DisplayInvalidPodcastDescription()
+                                    () => appMenu.DisplayRetryError(MessageBox.InvalidPodcastDescription)
                                 );
 
                                 DateTime? EpisodeRecorded = GetValidatedInput(
                                     () => appMenu.GetEpisodeRecordedDate(),
                                     a => Episode.IsValidRecordedDate(a),
-                                    () => appMenu.DisplayInvalidEpisodeDate()
+                                    () => appMenu.DisplayRetryError(MessageBox.InvalidDate)
                                 );
 
                                 int EpisodeLength = GetValidatedInput(
                                     () => appMenu.GetEpisodeLength(),
                                     a => Episode.IsValidEpisodeLength(a),
-                                    () => appMenu.DisplayInvalidEpisodeLength()
+                                    () => appMenu.DisplayRetryError(MessageBox.OutOfRange)
                                 );
 
                                 string premiumInput = GetValidatedInput(
                                     () => appMenu.GetPremiumEpisodeInput(),
                                     a => bool.TryParse(a, out _),
-                                    () => appMenu.DisplayInvalidBoolean()
+                                    () => appMenu.DisplayRetryError(MessageBox.InvalidBoolean)
                                 );
                                 bool PremiumEpisode = bool.Parse(premiumInput);
 
@@ -364,7 +364,7 @@ class AppController
                                 IReadOnlyList<Episode> episodes = podcasterUser.Podcasts[0].Episodes;
                                 if (episodes.Count == 0)
                                 {
-                                    appMenu.DisplayNoEpisodesPodcaster();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoEpisodesPodcaster);
                                 }
                                 else
                                 {
@@ -376,7 +376,7 @@ class AppController
                                 IReadOnlyList<Episode> episodes = podcasterUser.Podcasts[0].Episodes;
                                 if (episodes.Count == 0)
                                 {
-                                    appMenu.DisplayNoEpisodesPodcaster();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoEpisodesPodcaster);
                                 }
                                 else
                                 {
@@ -390,7 +390,7 @@ class AppController
                                 IReadOnlyList<Episode> episodes = podcasterUser.Podcasts[0].Episodes;
                                 if (episodes.Count == 0)
                                 {
-                                    appMenu.DisplayNoEpisodesPodcaster();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoEpisodesPodcaster);
                                 }
                                 else
                                 {
@@ -407,7 +407,7 @@ class AppController
                             }
                             else if (PodcastChoice != PodcasterLogOut && PodcastChoice != ChangePassword)
                             {
-                                appMenu.DisplayInvalidMenuChoice();
+                                appMenu.DisplayRetryError(MessageBox.InvalidMenuChoice);
                             }
                         } while (PodcastChoice != PodcasterLogOut);
                         loggedIn = true;
@@ -436,7 +436,7 @@ class AppController
                             {
                                 if (!user.Password.Equals(currentPassword))
                                 {
-                                    appMenu.DisplayPasswordNotMatchAgain();
+                                    appMenu.DisplayRetryError(MessageBox.PasswordNotMatch);
                                     currentPassword = appMenu.GetCurrentPassword();
                                 }
                             } while (!user.Password.Equals(currentPassword));
@@ -446,12 +446,12 @@ class AppController
                             {
                                 if (!Validation.IsValidPassword(newPassword))
                                 {
-                                    appMenu.DisplayInvalidPassword();
+                                    appMenu.DisplayRetryError(MessageBox.InvalidPassword);
                                     newPassword = appMenu.GetChangedPassword();
                                 }
                                 else if (newPassword.Equals(currentPassword))
                                 {
-                                    appMenu.DisplaySamePasswordError();
+                                    appMenu.DisplayRetryError(MessageBox.SamePassword);
                                     newPassword = appMenu.GetChangedPassword();
                                 }
                             } while (!Validation.IsValidPassword(newPassword) || newPassword.Equals(currentPassword));
@@ -463,7 +463,7 @@ class AppController
                         {
                             if (!podcastService.CheckPodcastExistence())
                             {
-                                appMenu.DisplayNoPodcasts();
+                                appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                 continue;
                             }
                             List<Podcast> podcasts = podcastService.GetPodcastInAlphabecticOrder();
@@ -475,7 +475,7 @@ class AppController
                                 appMenu.DisplayPodcastDetails(selectedPodcast);
                                 if (selectedPodcast.Episodes.Count == 0)
                                 {
-                                    appMenu.DisplayNoEpisodesListener();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoEpisodesListener);
                                 }
                                 else
                                 {
@@ -488,7 +488,7 @@ class AppController
                             List<Podcast> podcasts = podcastService.GetPodcastInAlphabecticOrder();
                             if (!podcastService.CheckPodcastExistence())
                             {
-                                appMenu.DisplayNoPodcasts();
+                                appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                 continue;
                             }
                             appMenu.DisplayPodcastList($"Displaying podcasts for {user.Name} to listen to.", podcasts);
@@ -499,7 +499,7 @@ class AppController
                                 podcastChoice = appMenu.GetPodcastMenuChoice();
                                 if (podcastChoice == 0) break;
                                 if (podcastChoice < 0 || podcastChoice > podcasts.Count)
-                                    appMenu.DisplayOutOfRangeError();
+                                    appMenu.DisplayRetryError(MessageBox.OutOfRange);
                             } while (podcastChoice < 0 || podcastChoice > podcasts.Count);
 
                             if (podcastChoice == 0) continue;
@@ -511,7 +511,7 @@ class AppController
                             List<Podcast> podcasts = podcastService.GetPodcastInAlphabecticOrder();
                             if (!podcastService.CheckPodcastExistence())
                             {
-                                appMenu.DisplayNoPodcasts();
+                                appMenu.DisplayErrorMessage(MessageBox.NoPodcasts);
                                 continue;
                             }
                             appMenu.DisplayPodcastList($"Displaying potential podcasts for {user.Name} to provide feedback on.", podcasts);
@@ -521,7 +521,7 @@ class AppController
                                 Podcast selectedPodcast = podcasts[podcastChoice - 1];
                                 if (selectedPodcast.Episodes.Count == 0)
                                 {
-                                    appMenu.DisplayNoEpisodesListener();
+                                    appMenu.DisplayErrorMessage(MessageBox.NoEpisodesListener);
                                 }
                                 else
                                 {
@@ -539,7 +539,7 @@ class AppController
                         }
                         else if (ListenerChoice != ListenerLogOut)
                         {
-                            appMenu.DisplayInvalidMenuChoice();
+                            appMenu.DisplayRetryError(MessageBox.InvalidMenuChoice);
                         }
                     } while (ListenerChoice != ListenerLogOut);
                     loggedIn = true;
@@ -565,14 +565,14 @@ class AppController
 
                     DateTime? registrationDate = GetValidatedInput(
                         () => appMenu.GetRegistrationDate(),
-                        a => a != null && PremiumListener.IsValidRegistrationDate(a.Value),
-                        () => appMenu.DisplayInvalidEpisodeDate()
+                        a => a != null && Validation.IsValidRegistrationDate(a.Value),
+                        () => appMenu.DisplayRetryError(MessageBox.InvalidDate)
                     );
 
                     int payId = GetValidatedInput(
                         () => appMenu.GetPayId(),
-                        a => PremiumListener.IsValidPayId(a),
-                        () => appMenu.DisplayInvalidPayId()
+                        a => Validation.IsValidPayId(a),
+                        () => appMenu.DisplayRetryError(MessageBox.InvalidPayId)
                     );
 
                     userService.RegisterPremiumUser(name, age, email, mobileNumber, password, registrationDate.Value, payId);
@@ -595,7 +595,7 @@ class AppController
                     {
                         if (!Podcast.IsValidGenreChoice(genreChoice))
                         {
-                            appMenu.DisplayInvalidMenuChoice();
+                            appMenu.DisplayRetryError(MessageBox.InvalidMenuChoice);
                             genreChoice = appMenu.GetGenreChoiceReprompt(genres.Length);
                         }
                     } while (!Podcast.IsValidGenreChoice(genreChoice));
@@ -607,7 +607,7 @@ class AppController
                     string podcastName = GetValidatedInput(
                         () => appMenu.GetPodcastName(),
                         a => Episode.IsValidDescription(a),
-                        () => appMenu.DisplayInvalidPodcastName()
+                        () => appMenu.DisplayRetryError(MessageBox.InvalidPodcastName)
                     );
 
                     string podcastDescription = appMenu.GetPodcastDescription();
@@ -642,20 +642,20 @@ class AppController
         string name = GetValidatedInput(
             () => appMenu.GetName(),
             a => Validation.IsValidName(a),
-            () => appMenu.DisplayInvalidName()
+            () => appMenu.DisplayRetryError(MessageBox.InvalidName)
         );
 
 
        int age = GetValidatedInput(
             () => appMenu.GetAge(),
             a => Validation.IsValidAge(a),
-            () => appMenu.DisplayInvalidAge());
+            () => appMenu.DisplayRetryError(MessageBox.InvalidAge));
 
 
         string mobileNumber = GetValidatedInput(
             () => appMenu.GetMobileNumber(),
             m => Validation.IsValidMobileNumber(m),
-            () => appMenu.DisplayInvalidMobileNumber()
+            () => appMenu.DisplayRetryError(MessageBox.InvalidMobileNumber)
         );
         
 
@@ -663,16 +663,16 @@ class AppController
         while (userService.CheckEmailExistence(email) || !Validation.IsValidEmail(email))
         {
             if (userService.CheckEmailExistence(email))
-                appMenu.DisplayErrorEmailRegister();
+                appMenu.DisplayRetryError(MessageBox.EmailAlreadyRegistered);
             else
-                appMenu.DisplayInvalidEmail();
+                appMenu.DisplayRetryError(MessageBox.InvalidEmail);
             email = appMenu.GetEmail();
         }
 
         string password = GetValidatedInput(
             () => appMenu.GetPassword(),
             m => Validation.IsValidPassword(m),
-            () => appMenu.DisplayInvalidPassword()
+            () => appMenu.DisplayRetryError(MessageBox.InvalidPassword)
         );
 
 
@@ -693,7 +693,7 @@ class AppController
     {
         if (selectedPodcast.Episodes.Count == 0)
         {
-            appMenu.DisplayNoEpisodesListener();
+            appMenu.DisplayErrorMessage(MessageBox.NoEpisodesListener);
             return false;
         }
 
@@ -706,7 +706,7 @@ class AppController
             episodeChoice = appMenu.GetEpisodeMenuChoice();
             if (episodeChoice == 0) break;
             if (episodeChoice < 0 || episodeChoice > selectedPodcast.Episodes.Count)
-                appMenu.DisplayOutOfRangeError();
+                appMenu.DisplayRetryError(MessageBox.OutOfRange);
         } while (episodeChoice < 0 || episodeChoice > selectedPodcast.Episodes.Count);
 
         if (episodeChoice == 0) return false;
@@ -716,13 +716,13 @@ class AppController
         ListeningRecord record = listeningService.GetListeningRecord(user, selectedEpisode);
         if (record != null && record.Completed)
         {
-            appMenu.DisplayAlreadyFinished();
+            appMenu.DisplayErrorMessage(MessageBox.AlreadyFinished);
             return false;
         }
 
         if (checkPremium && selectedEpisode.PremmiumEpisode && user is not PremiumListener)
         {
-            appMenu.DisplayPremiumOnlyError();
+            appMenu.DisplayErrorMessage(MessageBox.PremiumOnly);
             return false;
         }
 
@@ -741,11 +741,11 @@ class AppController
             listenDate = appMenu.GetListenDate();
             if (listenDate == null)
             {
-                appMenu.DisplayInvalidDateError();
+                appMenu.DisplayRetryError(MessageBox.InvalidDate);
             }
             else if (listenDate.Value.Date < requiredDate.Date)
             {
-                appMenu.DisplayDateAfterError(requiredDate);
+                appMenu.DisplayRetryError($"Supplied date must be after {requiredDate.ToString("d/MM/yyyy")}");
                 listenDate = null;
             }
         } while (listenDate == null);
@@ -755,7 +755,7 @@ class AppController
         {
             minutesListened = appMenu.GetListenMinutes();
             if (minutesListened < 1 || minutesListened > remaining)
-                appMenu.DisplayOutOfRangeError();
+                appMenu.DisplayRetryError(MessageBox.OutOfRange);
         } while (minutesListened < 1 || minutesListened > remaining);
 
         ListeningRecord updatedRecord = listeningService.ListenToEpisode(user, selectedPodcast, selectedEpisode, minutesListened, listenDate.Value);

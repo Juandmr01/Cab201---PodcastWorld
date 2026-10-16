@@ -20,9 +20,7 @@ public class UserRepository : IUserService
 
     public User RegisterPremiumUser(string name, int age, string email, string mobileNumber, string password, DateTime registrationDate, int payId)
     {
-        PremiumListener newPremiumUser = new PremiumListener(name, age, email, mobileNumber, password);
-        newPremiumUser.RegistrationDate = registrationDate;
-        newPremiumUser.PayId = payId;
+        PremiumListener newPremiumUser = new PremiumListener(name, age, email, mobileNumber, password, registrationDate, payId);
         Users.Add(newPremiumUser);
         return newPremiumUser;
     }

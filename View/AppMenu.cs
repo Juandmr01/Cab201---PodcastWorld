@@ -19,10 +19,10 @@ public class AppMenu : IAppMenu
 
    public void DisplayHeader()
    {
-      CmdLineUI.DisplayString("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+==");
+      CmdLineUI.DisplayString(MessageBox.HeaderBorder);
       CmdLineUI.DisplayString("         Welcome to PodCastWorld!");
       CmdLineUI.DisplayString("      Podcasting all over the world.");
-      CmdLineUI.DisplayString("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+==");
+      CmdLineUI.DisplayString(MessageBox.HeaderBorder);
    }
 
    // ============================================================
@@ -33,12 +33,12 @@ public class AppMenu : IAppMenu
    {
       CmdLineUI.DisplayString();
       CmdLineUI.DisplayString("Main Menu.");
-      CmdLineUI.DisplayString("Please make a choice from the menu below.");
+      CmdLineUI.DisplayString(MessageBox.MenuPrompt);
       CmdLineUI.DisplayString("1. Log in as a registered user.");
       CmdLineUI.DisplayString("2. Register as a new user.");
       CmdLineUI.DisplayString("3. Exit.");
 
-      int userChoice = CmdLineUI.GetInt("Please enter a choice between 1 and 3:");
+      int userChoice = CmdLineUI.GetInt(MessageBox.ChoiceBetween1And3);
 
       return userChoice;
    }
@@ -52,7 +52,7 @@ public class AppMenu : IAppMenu
       CmdLineUI.DisplayString("2. A premium listener.");
       CmdLineUI.DisplayString("3. A podcaster.");
 
-      int userChoice = CmdLineUI.GetInt("Please enter a choice between 1 and 3:");
+      int userChoice = CmdLineUI.GetInt(MessageBox.ChoiceBetween1And3);
       return userChoice;
    }
 
@@ -68,11 +68,11 @@ public class AppMenu : IAppMenu
    {
       CmdLineUI.DisplayString();
       CmdLineUI.DisplayString("Regular Listener Menu.");
-      CmdLineUI.DisplayString("Please make a choice from the menu below.");
-      CmdLineUI.DisplayString("1. See my details.");
-      CmdLineUI.DisplayString("2. Change my password.");
-      CmdLineUI.DisplayString("3. View all podcasts.");
-      CmdLineUI.DisplayString("4. Listen to a podcast episode.");
+      CmdLineUI.DisplayString(MessageBox.MenuPrompt);
+      CmdLineUI.DisplayString(MessageBox.MenuSeeDetails);
+      CmdLineUI.DisplayString(MessageBox.MenuChangePassword);
+      CmdLineUI.DisplayString(MessageBox.MenuViewAllPodcasts);
+      CmdLineUI.DisplayString(MessageBox.MenuListen);
       CmdLineUI.DisplayString("5. Provide feedback on a podcast episode.");
       CmdLineUI.DisplayString("6. Log out.");
 
@@ -85,11 +85,11 @@ public class AppMenu : IAppMenu
    {
       CmdLineUI.DisplayString();
       CmdLineUI.DisplayString("Premium Listener Menu.");
-      CmdLineUI.DisplayString("Please make a choice from the menu below.");
-      CmdLineUI.DisplayString("1. See my details.");
-      CmdLineUI.DisplayString("2. Change my password.");
-      CmdLineUI.DisplayString("3. View all podcasts.");
-      CmdLineUI.DisplayString("4. Listen to a podcast episode.");
+      CmdLineUI.DisplayString(MessageBox.MenuPrompt);
+      CmdLineUI.DisplayString(MessageBox.MenuSeeDetails);
+      CmdLineUI.DisplayString(MessageBox.MenuChangePassword);
+      CmdLineUI.DisplayString(MessageBox.MenuViewAllPodcasts);
+      CmdLineUI.DisplayString(MessageBox.MenuListen);
       CmdLineUI.DisplayString("5. Listen to a subscribed podcast episode.");
       CmdLineUI.DisplayString("6. Subscribe to a podcast.");
       CmdLineUI.DisplayString("7. Unsubscribe from a podcast.");
@@ -102,9 +102,9 @@ public class AppMenu : IAppMenu
          {
             CmdLineUI.DisplayString();
             CmdLineUI.DisplayString("Podcaster Menu.");
-            CmdLineUI.DisplayString("Please make a choice from the menu below.");
-            CmdLineUI.DisplayString("1. See my details.");
-            CmdLineUI.DisplayString("2. Change my password.");
+            CmdLineUI.DisplayString(MessageBox.MenuPrompt);
+            CmdLineUI.DisplayString(MessageBox.MenuSeeDetails);
+            CmdLineUI.DisplayString(MessageBox.MenuChangePassword);
             CmdLineUI.DisplayString("3. Create an episode.");
             CmdLineUI.DisplayString("4. View my episodes.");
             CmdLineUI.DisplayString("5. View statistics about my episodes.");
@@ -158,14 +158,14 @@ public class AppMenu : IAppMenu
 
    public string GetPassword()
    {
-      CmdLineUI.DisplayString("Please enter your password:");
+      CmdLineUI.DisplayString(MessageBox.EnterPassword);
       DisplayPasswordRequirements();
       return CmdLineUI.GetString();
    }
 
    public string GetNewPassword()
    {
-      CmdLineUI.DisplayString("Please enter your password:");
+      CmdLineUI.DisplayString(MessageBox.EnterPassword);
       return CmdLineUI.GetString();
    }
 
@@ -246,7 +246,7 @@ public class AppMenu : IAppMenu
    // Requirements shown to the user
    // ============================================================
 
-   public void DisplayPasswordRequirements()
+   private void DisplayPasswordRequirements()
    {
       CmdLineUI.DisplayString("Your password must:");
       CmdLineUI.DisplayString("- be at least 8 characters long");
@@ -259,117 +259,14 @@ public class AppMenu : IAppMenu
    // Error messages
    // ============================================================
 
-   public void DisplayErrorNoUser()
+   public void DisplayRetryError(string message)
    {
-      CmdLineUI.DisplayError("There are no people registered");
+      CmdLineUI.DisplayErrorAgain(message);
    }
 
-   public void DisplayErrorEmailNotRegister()
+   public void DisplayErrorMessage(string message)
    {
-      CmdLineUI.DisplayError("Email is not registered");
-   }
-
-   public void DisplayErrorEmailRegister()
-   {
-      CmdLineUI.DisplayErrorAgain("Email already registered");
-   }
-
-
-   public void DisplayInvalidName()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied name is invalid");
-   }
-
-   public void DisplayInvalidAge()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied age is invalid");
-   }
-     
-   public void DisplayInvalidMobileNumber()
-   {
-
-       CmdLineUI.DisplayErrorAgain("Supplied mobile number is invalid");
-   }
-
-   public void DisplayInvalidMenuChoice()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied menu input is out of range");
-   }
-
-   public void DisplayInvalidEmail()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied email is invalid");
-   }
-
-   public void DisplayInvalidPassword()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied password is invalid");
-   }
-
-   public void DisplayPasswordNotMatch()
-   {
-      CmdLineUI.DisplayError("Entered password does not match existing password");
-   }
-
-   public void DisplayPasswordNotMatchAgain()
-   {
-      CmdLineUI.DisplayErrorAgain("Entered password does not match existing password");
-   }
-
-   public void DisplaySamePasswordError()
-   {
-      CmdLineUI.DisplayErrorAgain("New password is the same as the existing password");
-   }
-
-   
-   public void DisplayInvalidPayId()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied pay ID is invalid");
-   }
-
-   public void DisplayNoPodcasts()
-   {
-      CmdLineUI.DisplayError("There are no podcasts");
-   }
-
-   public void DisplayNoEpisodesListener()
-   {
-      CmdLineUI.DisplayError("The podcaster has not recorded any episodes");
-   }
-
-   public void DisplayNoEpisodesPodcaster()
-   {
-      CmdLineUI.DisplayError("You have not recorded any episodes");
-   }
-
-   public void DisplayInvalidEpisodeName()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied episode's name is invalid");
-   }
-
-   public void DisplayInvalidPodcastName()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied podcast name is invalid");
-   }
-
-   public void DisplayInvalidPodcastDescription()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied podcast description is invalid");
-   }
-
-   public void DisplayInvalidEpisodeDate()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied date is invalid");
-   }
-
-   public void DisplayInvalidEpisodeLength()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied value is out of range");
-   }
-
-   public void DisplayInvalidBoolean()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied value must be a boolean");
+      CmdLineUI.DisplayError(message);
    }
    // ============================================================
    // Status and confirmation messages
@@ -405,11 +302,6 @@ public class AppMenu : IAppMenu
       CmdLineUI.DisplayString(string.Format("Congratulations {0}. You have registered as a podcaster.", name));
    }
 
-   public void DisplayRegistrationSuccess(string name)
-   {
-      CmdLineUI.DisplayString($"Congratulations {name}. You have successfully registered as a regular listener.");
-   }
-
    public void DisplayPasswordUpdateSuccess()
    {
       CmdLineUI.DisplayString("Password has been updated.");
@@ -429,40 +321,40 @@ public class AppMenu : IAppMenu
       CmdLineUI.DisplayString($"Welcome back {name}.");
    }
 
-   public void DisplayUserDetails(User user, int episodesStarted, int episodesCompleted, int totalMinutes, int advertisements)
+   private void DisplayPersonalDetails(User user)
    {
-      CmdLineUI.DisplayString("Your details.");
+      CmdLineUI.DisplayString(MessageBox.DetailsHeader);
       CmdLineUI.DisplayString($"Name: {user.Name}");
       CmdLineUI.DisplayString($"Age: {user.Age}");
       CmdLineUI.DisplayString($"Mobile phone number: {user.MobileNumber}");
       CmdLineUI.DisplayString($"Email: {user.Email}");
+   }
+
+   private void DisplayListeningStats(int episodesStarted, int episodesCompleted, int totalMinutes)
+   {
       CmdLineUI.DisplayString($"Episodes started: {episodesStarted}");
       CmdLineUI.DisplayString($"Episodes completed: {episodesCompleted}");
       CmdLineUI.DisplayString($"Total minutes listened to: {totalMinutes}");
+   }
+
+   public void DisplayUserDetails(User user, int episodesStarted, int episodesCompleted, int totalMinutes, int advertisements)
+   {
+      DisplayPersonalDetails(user);
+      DisplayListeningStats(episodesStarted, episodesCompleted, totalMinutes);
       CmdLineUI.DisplayString($"Advertisements listened to: {advertisements}");
    }
 
    public void DisplayPremiumUserDetails(PremiumListener premiumListener, int episodesStarted, int episodesCompleted, int totalMinutes)
    {
-      CmdLineUI.DisplayString("Your details.");
-      CmdLineUI.DisplayString($"Name: {premiumListener.Name}");
-      CmdLineUI.DisplayString($"Age: {premiumListener.Age}");
-      CmdLineUI.DisplayString($"Mobile phone number: {premiumListener.MobileNumber}");
-      CmdLineUI.DisplayString($"Email: {premiumListener.Email}");
-      CmdLineUI.DisplayString($"Episodes started: {episodesStarted}");
-      CmdLineUI.DisplayString($"Episodes completed: {episodesCompleted}");
-      CmdLineUI.DisplayString($"Total minutes listened to: {totalMinutes}");
+      DisplayPersonalDetails(premiumListener);
+      DisplayListeningStats(episodesStarted, episodesCompleted, totalMinutes);
       CmdLineUI.DisplayString($"Registration Date: {premiumListener.RegistrationDate:dd/MM/yyyy}");
       CmdLineUI.DisplayString($"Pay ID: {premiumListener.PayId}");
    }
 
    public void DisplayPodcasterDetails(Podcaster podcaster)
    {
-      CmdLineUI.DisplayString("Your details.");
-      CmdLineUI.DisplayString($"Name: {podcaster.Name}");
-      CmdLineUI.DisplayString($"Age: {podcaster.Age}");
-      CmdLineUI.DisplayString($"Mobile phone number: {podcaster.MobileNumber}");
-      CmdLineUI.DisplayString($"Email: {podcaster.Email}");
+      DisplayPersonalDetails(podcaster);
       foreach (Podcast podcast in podcaster.Podcasts)
       {
          CmdLineUI.DisplayString($"Podcast name: {podcast.Title}");
@@ -579,36 +471,6 @@ public class AppMenu : IAppMenu
    public void DisplayListeningProgressTotal(string podcastName, string episodeName, int totalMinutes, DateTime lastDate, int remaining)
    {
       CmdLineUI.DisplayString($"In total you have listened to podcast {podcastName}, episode {episodeName}, for {totalMinutes} minutes. The last time you listened was on {lastDate:dd/MM/yyyy}. You have {remaining} minutes remaining.");
-   }
-
-   public void DisplayAlreadyFinished()
-   {
-      CmdLineUI.DisplayError("You have already finished this episode and cannot listen to it again");
-   }
-
-   public void DisplayPremiumOnlyError()
-   {
-      CmdLineUI.DisplayError("This episode can only be view by premium listeners");
-   }
-
-   public void DisplayNotSubscribedError()
-   {
-      CmdLineUI.DisplayError("You are not subscribed to any podcasts");
-   }
-
-   public void DisplayInvalidDateError()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied date is invalid");
-   }
-
-   public void DisplayDateAfterError(DateTime date)
-   {
-      CmdLineUI.DisplayErrorAgain($"Supplied date must be after {date.ToString("d/MM/yyyy")}");
-   }
-
-   public void DisplayOutOfRangeError()
-   {
-      CmdLineUI.DisplayErrorAgain("Supplied value is out of range");
    }
 
    public int GetFeedbackEpisodeMenuChoice()

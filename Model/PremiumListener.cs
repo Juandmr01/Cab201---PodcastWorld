@@ -4,8 +4,21 @@
 /// </summary>
 public class PremiumListener : User, ISubscribable
 {
-    public DateTime RegistrationDate { get; set; } = DateTime.Now;
-    public int PayId { get; set; } = 0;
+    private int _payId;
+
+    public DateTime RegistrationDate { get; private set; } = DateTime.Now;
+
+    public int PayId
+    {
+        get => _payId;
+        private set
+        {
+            if (!Validation.IsValidPayId(value))
+                throw new ArgumentException(MessageBox.InvalidPayId);
+            _payId = value;
+        }
+    }
+
     public string SubscriptionType { get; set; }
     public DateTime SubscriptionStartDate { get; set; }
     public DateTime SubscriptionEndDate { get; set; }
@@ -17,9 +30,11 @@ public class PremiumListener : User, ISubscribable
     /// </summary>
     public IReadOnlyList<Podcast> SubscribedPodcasts => _subscribedPodcasts;
 
-    public PremiumListener(string name, int age, string email, string mobileNumber, string password)
+    public PremiumListener(string name, int age, string email, string mobileNumber, string password, DateTime registrationDate, int payId)
         : base(name, age, email, mobileNumber, password)
     {
+        RegistrationDate = registrationDate;
+        PayId = payId;
     }
 
     /// <summary>
@@ -38,19 +53,5 @@ public class PremiumListener : User, ISubscribable
         _subscribedPodcasts.Remove(podcast);
     }
 
-    /// <summary>
-    /// Validates that the registration date is a valid date.
-    /// </summary>
-    public static bool IsValidRegistrationDate(DateTime registrationDate)
-    {
-        return true;
-    }
 
-    /// <summary>
-    /// Validates that the pay ID is a 6-digit number.
-    /// </summary>
-    public static bool IsValidPayId(int payId)
-    {
-        return payId >= 100000 && payId <= 999999;
-    }
 }

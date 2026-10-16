@@ -77,6 +77,21 @@ public void DisplayInvalidInfo(string info)
     {
         return age >= 18 && age <= 99;
     }
+     /// <summary>
+    /// Validates that the registration date is a valid date.
+    /// </summary>
+    public static bool IsValidRegistrationDate(DateTime registrationDate)
+    {
+        return true;
+    }
+
+    /// <summary>
+    /// Validates that the pay ID is a 6-digit number.
+    /// </summary>
+    public static bool IsValidPayId(int payId)
+    {
+        return payId >= 100000 && payId <= 999999;
+    }
 }
 
 
