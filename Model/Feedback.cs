@@ -4,11 +4,21 @@
 /// </summary>
 public class Feedback
 {
-    public User Listener { get; set; }
-    public Episode Episode { get; set; }
-    public bool ThumbsUp { get; set; }
-    public string TextFeedback { get; set; }
+    /// <summary>The listener who provided the feedback.</summary>
+    public User Listener { get; private set; }
 
+    /// <summary>The episode the feedback is about.</summary>
+    public Episode Episode { get; private set; }
+
+    /// <summary>True for a thumbs-up rating, false for thumbs-down.</summary>
+    public bool ThumbsUp { get; private set; }
+
+    /// <summary>The listener's written feedback text.</summary>
+    public string TextFeedback { get; private set; }
+
+    /// <summary>
+    /// Creates a new feedback entry for an episode.
+    /// </summary>
     public Feedback(User listener, Episode episode, bool thumbsUp, string textFeedback)
     {
         Listener = listener;

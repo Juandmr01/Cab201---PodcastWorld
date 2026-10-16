@@ -19,10 +19,6 @@ public class PremiumListener : User, ISubscribable
         }
     }
 
-    public string SubscriptionType { get; set; }
-    public DateTime SubscriptionStartDate { get; set; }
-    public DateTime SubscriptionEndDate { get; set; }
-
     private List<Podcast> _subscribedPodcasts = new List<Podcast>();
 
     /// <summary>

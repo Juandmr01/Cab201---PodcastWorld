@@ -3,10 +3,6 @@
 /// </summary>
 public class Podcaster : User
 {
-    public string SubscriptionType { get; set; }
-    public DateTime SubscriptionStartDate { get; set; }
-    public DateTime SubscriptionEndDate { get; set; }
-
     private List<Podcast> _podcasts = new List<Podcast>();
 
     /// <summary>
@@ -14,6 +10,9 @@ public class Podcaster : User
     /// </summary>
     public IReadOnlyList<Podcast> Podcasts => _podcasts;
 
+    /// <summary>
+    /// Creates a new podcaster with the specified personal details.
+    /// </summary>
     public Podcaster(string name, int age, string email, string mobileNumber, string password)
         : base(name, age, email, mobileNumber, password)
     {

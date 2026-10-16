@@ -1,5 +1,11 @@
-﻿public class Program
+﻿/// <summary>
+/// Entry point for the PodCastWorld application.
+/// </summary>
+public class Program
 {
+    /// <summary>
+    /// Creates the repository, view, and controller, then starts the application.
+    /// </summary>
     static void Main(string[] args)
     {
         MasterRepository repository = new MasterRepository();

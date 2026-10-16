@@ -4,10 +4,6 @@
 /// </summary>
 public class Listener : User
 {
-    public string SubscriptionType { get; set; }
-    public DateTime SubscriptionStartDate { get; set; }
-    public DateTime SubscriptionEndDate { get; set; }
-
     /// <summary>
     /// Creates a new regular listener with the specified personal details.
     /// </summary>

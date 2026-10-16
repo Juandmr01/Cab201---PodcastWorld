@@ -1,16 +1,10 @@
+/// <summary>
+/// Single source of truth for all input validation rules used
+/// by both the controller (pre-validation) and model (setter guards).
+/// </summary>
 public static class Validation
 {
-    /// Comments from the teacher, create a class that hanldes all the validation from the porject tehn can use this class in controller
-    /// Create a master repository that handles other repository by user, tehy cointains admin actions list the list of user or podcast or epsiodes(be aware of the single responsability)
-    /// Create a class that handles the dispaly input from each user 
-    /// create pcrivate set validation for the proeprties of the classes and then i woiuld not need to validaed it my controller becuase the class property is alredy validating this use fiedl isnetdad of instance varialbles  and argumentException for the sets and i can replcae for display. 
-
-/* from a constant classs
-public void DisplayInvalidInfo(string info)
-   {
-      CmdLineUI.DisplayErrorAgain(info)
-   }
-*//// <summary>
+    /// <summary>
     /// Validates that the name is at least 3 characters and contains only
     /// letters, spaces, hyphens, apostrophes, or periods.
     /// </summary>
@@ -77,7 +71,8 @@ public void DisplayInvalidInfo(string info)
     {
         return age >= 18 && age <= 99;
     }
-     /// <summary>
+
+    /// <summary>
     /// Validates that the registration date is a valid date.
     /// </summary>
     public static bool IsValidRegistrationDate(DateTime registrationDate)
@@ -93,5 +88,3 @@ public void DisplayInvalidInfo(string info)
         return payId >= 100000 && payId <= 999999;
     }
 }
-
-

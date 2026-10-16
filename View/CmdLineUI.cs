@@ -57,6 +57,9 @@ public static class CmdLineUI
         Console.WriteLine("# Please try again.");
         Console.WriteLine("#####");
     }
+    /// <summary>
+    /// Displays a prompt asking the user to enter the specified data.
+    /// </summary>
     public static void DisplayGetData(string msg)
     {
         Console.WriteLine($"Please enter your {msg}:");
@@ -96,6 +99,9 @@ public static class CmdLineUI
         return i;
     }
 
+    /// <summary>
+    /// Reads an integer from console without displaying a prompt first.
+    /// </summary>
     public static int GetInt()
     {
         int i;
