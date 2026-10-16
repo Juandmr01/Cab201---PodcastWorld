@@ -1,0 +1,44 @@
+User Registration
+As a user, I want to register for the application by providing my name, age, email address, mobile number, and password, so that I can create a secure account.
+User Authentication
+As a user, I want to authenticate myself using my email address and password, so that I can securely access my account.
+View Personal Details
+As a user, I want to view my registered personal details, so that I can verify that my information has been recorded correctly.
+Log Out
+As a user, I want to log out of the application, so that my account cannot be accessed by someone else using my device.
+Change Password
+As a user, I want to change my password, so that I can maintain the security of my account.
+Identify Podcasts
+As a listener, I want to see a list of podcasts sorted alphabetically, so I can easily identify my favourite podcasts.
+Listen to Episodes
+As a listener, I want to listen to podcast episodes at any time, so that I can enjoy podcasts whenever it is convenient for me.
+Resume Listening
+As a listener, I want to resume an episode from where I previously stopped listening, so that I can listen to an episode over multiple sessions.
+Listening Time
+As a listener, I want to specify how long I intend to listen to a podcast, so that I can fit my listening into my available time.
+Single Episode Listening
+As a listener, I want to listen to an episode only once, so that I do not accidentally listen to the same episode multiple times.
+Advertisement-Supported Listening
+As a regular listener, I am willing to listen to advertisements, so that I can access podcast episodes for free.
+Premium Listening
+As a premium listener, I want to listen to podcasts without advertisements, so that I can enjoy an uninterrupted listening experience.
+Premium Pay Identifier
+As a premium listener, I want to have a payment identifier, so that the company remembers me.
+Premium Subscription
+As a premium listener, I want my subscription start date to be recorded, so that my monthly subscription can be managed correctly.
+Podcast Subscription
+As a premium listener, I want to subscribe to my favourite podcasts, so that I can easily access the podcasts I enjoy.
+Premium Episodes
+As a premium listener, I want some episodes to be only available to me, to that I get better value from my subscription.
+Register Podcast
+As a podcaster, I want to register my podcast with a name, genre and description, so that listeners can identify my podcast.
+Create Episode
+As a podcaster, I want to record for each episode the name, length, description, recorded date and if the episode is only available to premium listeners, so that listeners can identify and understand what each episode is about.
+Episode Statistics
+As a podcaster, I want to see how many listeners have started and completed my episodes, so that I can understand the popularity of my podcast.
+Provide Feedback
+As a listener, I want to give each episode I have finished a thumbs-up or a thumbs-down rating and provide written feedback, so that I can express my opinion about the episode 
+Single Feedback Submission
+As a listener, I want to provide feedback on each episode only once, so that my feedback is not duplicated.
+View Feedback
+As a podcaster, I want to view feedback from my listeners, so that I can understand what I am doing well and what areas need improvement.

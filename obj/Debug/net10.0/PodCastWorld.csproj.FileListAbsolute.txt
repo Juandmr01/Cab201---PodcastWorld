@@ -1,0 +1,14 @@
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.AssemblyInfoInputs.cache
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.AssemblyInfo.cs
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.csproj.CoreCompileInputs.cache
+/Users/juandm/PodCastWorld/bin/Debug/net10.0/PodCastWorld
+/Users/juandm/PodCastWorld/bin/Debug/net10.0/PodCastWorld.deps.json
+/Users/juandm/PodCastWorld/bin/Debug/net10.0/PodCastWorld.runtimeconfig.json
+/Users/juandm/PodCastWorld/bin/Debug/net10.0/PodCastWorld.dll
+/Users/juandm/PodCastWorld/bin/Debug/net10.0/PodCastWorld.pdb
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.dll
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/refint/PodCastWorld.dll
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.pdb
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/PodCastWorld.genruntimeconfig.cache
+/Users/juandm/PodCastWorld/obj/Debug/net10.0/ref/PodCastWorld.dll

@@ -1,0 +1,198 @@
+<mxfile host="app.diagrams.net" agent="generate_class_diagram.py" version="24.0.0">
+  <diagram id="podcastworld-class-diagram" name="PodCastWorld Class Diagram">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="IAdvertisment" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;IAdvertisment" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="40" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="IAdvertisment-attrs" value="&#160;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="IAdvertisment">
+          <mxGeometry y="30" width="240" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="IAdvertisment-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="IAdvertisment">
+          <mxGeometry y="52" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="IAdvertisment-methods" value="+ DisplayAdvertisment(): string" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="IAdvertisment">
+          <mxGeometry y="60" width="240" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="User" value="&lt;&lt;abstract&gt;&gt;&lt;br&gt;User" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;swimlaneFillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="240" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="User-attrs" value="+ Id: int&lt;br&gt;+ Name: string&lt;br&gt;+ Age: int&lt;br&gt;+ Email: string&lt;br&gt;+ IsValid: bool&lt;br&gt;+ MobileNumber: string&lt;br&gt;+ Password: string&lt;br&gt;+ susbcriptionType: string" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="User">
+          <mxGeometry y="30" width="240" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="User-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="User">
+          <mxGeometry y="164" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="User-methods" value="+ User(id, name, age, email, mobileNumber, password)&lt;br&gt;+ ViewPersonalDetails(): string" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="User">
+          <mxGeometry y="172" width="240" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Listener" value="Listener" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="560" y="340" width="240" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="Listener-attrs" value="&#160;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Listener">
+          <mxGeometry y="30" width="240" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="Listener-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="Listener">
+          <mxGeometry y="52" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Listener-methods" value="+ Listener(id, name, age, email, mobileNumber, password)&lt;br&gt;+ DisplayAdvertisment(): string" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Listener">
+          <mxGeometry y="60" width="240" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="PremiumListener" value="PremiumListener" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="860" y="340" width="240" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="PremiumListener-attrs" value="+ SubscriptionType: string&lt;br&gt;+ SubscriptionStartDate: DateTime&lt;br&gt;+ SubscriptionEndDate: DateTime" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="PremiumListener">
+          <mxGeometry y="30" width="240" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="PremiumListener-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="PremiumListener">
+          <mxGeometry y="84" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="PremiumListener-methods" value="+ PremiumListener(id, name, age, email, mobileNumber,&lt;br&gt;  password, subscriptionType, startDate, endDate)&lt;br&gt;+ AccessPremiumContent(): void" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="PremiumListener">
+          <mxGeometry y="92" width="240" height="54" as="geometry" />
+        </mxCell>
+
+        <mxCell id="PodcastWorld" value="PodcastWorld" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="680" y="600" width="260" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="PodcastWorld-attrs" value="- Podcasts: List&lt;Podcast&gt;&lt;br&gt;- Users: List&lt;User&gt;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="PodcastWorld">
+          <mxGeometry y="30" width="260" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="PodcastWorld-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="PodcastWorld">
+          <mxGeometry y="68" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="PodcastWorld-methods" value="+ PodcastWorld()&lt;br&gt;- AuthenticateUser(email, password): string&lt;br&gt;- changePassword(email, oldPw, newPw): string&lt;br&gt;- GetPodcastInAlphabecticOrder(): List&lt;Podcast&gt;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="PodcastWorld">
+          <mxGeometry y="76" width="260" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Podcast" value="Podcast" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="600" width="240" height="194" as="geometry" />
+        </mxCell>
+        <mxCell id="Podcast-attrs" value="- episodes: List&lt;Episode&gt;&lt;br&gt;+ Id: int&lt;br&gt;+ Title: string&lt;br&gt;+ Description: string&lt;br&gt;+ Host: string&lt;br&gt;+ Category: string&lt;br&gt;+ Duration: int&lt;br&gt;+ ReleaseDate: DateTime" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Podcast">
+          <mxGeometry y="30" width="240" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="Podcast-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="Podcast">
+          <mxGeometry y="164" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Podcast-methods" value="&#160;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Podcast">
+          <mxGeometry y="172" width="240" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Episode" value="Episode" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="880" width="260" height="258" as="geometry" />
+        </mxCell>
+        <mxCell id="Episode-attrs" value="+ Title: string&lt;br&gt;+ Description: string&lt;br&gt;+ Duration: int&lt;br&gt;+ ReleaseDate: DateTime&lt;br&gt;+ StartTime: DateTime&lt;br&gt;+ EndTime: DateTime&lt;br&gt;+ StopTime: DateTime&lt;br&gt;+ isPremium: bool&lt;br&gt;- status: EpisodeStatus" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Episode">
+          <mxGeometry y="30" width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Episode-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="Episode">
+          <mxGeometry y="180" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Episode-methods" value="+ Episode(title, description, duration)&lt;br&gt;+ Play(): void&lt;br&gt;+ StopEpisode(): DateTime&lt;br&gt;+ Continue(): void" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Episode">
+          <mxGeometry y="188" width="260" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="AppMenu" value="AppMenu" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="40" y="340" width="240" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="AppMenu-attrs" value="&#160;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="AppMenu">
+          <mxGeometry y="30" width="240" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="AppMenu-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="AppMenu">
+          <mxGeometry y="52" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="AppMenu-methods" value="+ DisplayHeader(): void&lt;br&gt;+ DisplayMenuOptions(): void" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="AppMenu">
+          <mxGeometry y="60" width="240" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="appController" value="appController" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="240" height="162" as="geometry" />
+        </mxCell>
+        <mxCell id="appController-attrs" value="- user: User&lt;br&gt;~ cmdLineUI: CmdLineUI" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="appController">
+          <mxGeometry y="30" width="240" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="appController-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="appController">
+          <mxGeometry y="68" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="appController-methods" value="+ Run(): void&lt;br&gt;+ Start(): void&lt;br&gt;+ Stop(): void&lt;br&gt;+ ChangePassword(newPassword): string&lt;br&gt;+ LogOut(): string" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="appController">
+          <mxGeometry y="76" width="240" height="86" as="geometry" />
+        </mxCell>
+
+        <mxCell id="CmdLineUI" value="&lt;&lt;static&gt;&gt;&lt;br&gt;CmdLineUI" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;swimlaneFillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="320" y="600" width="240" height="242" as="geometry" />
+        </mxCell>
+        <mxCell id="CmdLineUI-attrs" value="&#160;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="CmdLineUI">
+          <mxGeometry y="30" width="240" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="CmdLineUI-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="CmdLineUI">
+          <mxGeometry y="52" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="CmdLineUI-methods" value="+ DisplayString(): void&lt;br&gt;+ DisplayString(msg): void&lt;br&gt;+ DisplayString(o): void&lt;br&gt;+ DisplayError(msg): void&lt;br&gt;+ DisplayErrorAgain(msg): void&lt;br&gt;+ GetString(): string&lt;br&gt;+ GetInt(): int&lt;br&gt;+ GetInt(msg): int&lt;br&gt;+ GetDouble(): double&lt;br&gt;+ GetBool(): bool&lt;br&gt;+ GetDateTime(): DateTime" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="CmdLineUI">
+          <mxGeometry y="60" width="240" height="182" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Program" value="Program" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeParentMax=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="40" y="880" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="Program-attrs" value="&#160;" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Program">
+          <mxGeometry y="30" width="240" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="Program-div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="Program">
+          <mxGeometry y="52" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Program-methods" value="- Main(args): void" style="text;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;spacingTop=2;overflow=hidden;portConstraint=eastwest;html=1;fontSize=11;whiteSpace=wrap;" vertex="1" parent="Program">
+          <mxGeometry y="60" width="240" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" value="" style="endArrow=block;endFill=0;endSize=16;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Listener" target="User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e2" value="" style="endArrow=block;endFill=0;endSize=16;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="PremiumListener" target="User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e3" value="" style="endArrow=block;endFill=0;endSize=16;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Listener" target="IAdvertisment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e4" value="" style="endArrow=block;endFill=0;endSize=16;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="appController" target="AppMenu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e5" value="*" style="startArrow=diamond;startFill=0;startSize=16;endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="PodcastWorld" target="Podcast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e6" value="*" style="startArrow=diamond;startFill=0;startSize=16;endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="PodcastWorld" target="User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e7" value="*" style="startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="Podcast" target="Episode">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e8" value="user" style="endArrow=open;endFill=1;endSize=10;html=1;rounded=0;" edge="1" parent="1" source="appController" target="User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e9" value="cmdLineUI" style="endArrow=open;endFill=1;endSize=10;html=1;rounded=0;" edge="1" parent="1" source="appController" target="CmdLineUI">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e10" value="uses" style="endArrow=open;endFill=1;endSize=10;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="AppMenu" target="CmdLineUI">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e11" value="creates" style="endArrow=open;endFill=1;endSize=10;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="Program" target="appController">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
